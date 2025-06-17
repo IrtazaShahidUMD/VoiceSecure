@@ -54,7 +54,7 @@ VoiceSecure_Artifacts/
 
 ## Requirements
 
-- **Python 3.8+**
+- **Python 3.8**
 - **MATLAB** with toolboxes:
   - Audio Toolbox  
   - Signal Processing Toolbox  
@@ -72,7 +72,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 # Activate conda
 source ~/miniconda3/bin/activate
 
-# Create and activate environment
+# Create and activate the environment
 conda create --name py38 python=3.8.18
 conda activate py38
 
@@ -118,21 +118,22 @@ pip install -r requirements.txt
 ---
 
 ### `ScriptForApplyingVoiceSecure/`
+Given audio files, this directory allows to apply VoiceSecure-based modifications and compute speaker embeddings and word error rates which later can be use to evaluate VoiceSecure's performance.
 
-- `Apply_VoiceSecure.py`: Apply transformations  
-- `ComputeSpeakerEmbeddings.py`, `Script2ComputeIVectors.py`: Speaker embeddings  
-- `ComputeWER.py`: Evaluate ASR models (Whisper, DeepSpeech, Wav2Vec2)
+- `Apply_VoiceSecure.py`: Apply VoiceSecure-based transformations. 
+- `ComputeSpeakerEmbeddings.py`, `Script2ComputeIVectors.py`: Compute and store Speaker embeddings (X-Vector, ECAPA, i-Vector).
+- `ComputeWER.py`: Compute and store word error rates (Whisper, DeepSpeech, Wav2Vec2).
 
 ---
 
 ### `ScriptForTrainingModel/`
-
+Allows to train VoiceSecure model from scratch on any dataset.
 - `Training.py`: Train VoiceSecure from scratch
 
 ---
 
 ### `ScriptForComputingMetrics/`
-
+Once you already have VoiceSecure modified speech, and computed speaker embeddings and word error rate, these sctipts allow to compute and store mean intelligibility, word error rate, and speaker mismatch rate score for evaluation.
 - `Script2ComputePerceptualScore.py`: STOI scores  
 - `Script2PlotASR_Results.py`: WER plots  
 - `Script2PlotSpeaker_Results_MMR.py`: MMR plots  
@@ -141,7 +142,7 @@ pip install -r requirements.txt
 ---
 
 ### `ScriptsForCompiledResults/`
-
+These scripts allow to plot all evaluation results included in the paper from the pre-computed and shared results in Data2 directory.
 - MATLAB scripts to reproduce paper figures/tables using data from `Data2/`
 
 ---
